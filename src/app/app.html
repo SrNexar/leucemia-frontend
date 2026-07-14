@@ -111,8 +111,66 @@
     </div>
 
     <!-- CARD RESULTADO -->
-    <div class="card resultado-card" *ngIf="resultado">
-      <h2 class="card-title">Resultado del análisis</h2>
+<div class="card resultado-card" *ngIf="resultado">
+  <h2 class="card-title">Resultado del análisis</h2>
+
+  <!-- RESULTADO INDETERMINADO -->
+  <div class="resultado-indeterminado"
+       *ngIf="resultado.clase === 'Indeterminado'">
+    <span class="indeterminado-icono">⚠️</span>
+    <h3>Imagen no reconocida</h3>
+    <p>{{ resultado.descripcion }}</p>
+    <p class="indeterminado-hint">
+      Para mejores resultados utilice imágenes de microscopía óptica
+      con tinción de Giemsa provenientes de muestras de sangre periférica.
+    </p>
+  </div>
+
+  <!-- RESULTADO NORMAL -->
+  <ng-container *ngIf="resultado.clase !== 'Indeterminado'">
+
+    <!-- CLASE PREDICHA -->
+    <div class="resultado-principal"
+         [style.border-color]="getColorClase(resultado.clase)">
+      <span class="resultado-label">Clasificación detectada</span>
+      <span class="resultado-clase"
+            [style.color]="getColorClase(resultado.clase)">
+        {{ resultado.clase }}
+      </span>
+      <span class="resultado-confianza">
+        Confianza: <strong>{{ resultado.confianza }}%</strong>
+      </span>
+      <p class="resultado-descripcion">{{ resultado.descripcion }}</p>
+    </div>
+
+    <!-- PROBABILIDADES -->
+    <h3 class="prob-titulo">Distribución de probabilidades</h3>
+    <div class="probabilidades">
+      <div class="prob-item" *ngFor="let clase of getClases()">
+        <div class="prob-header">
+          <span class="prob-clase">{{ clase }}</span>
+          <span class="prob-valor">
+            {{ resultado.probabilidades[clase] }}%
+          </span>
+        </div>
+        <div class="prob-barra-fondo">
+          <div
+            class="prob-barra-relleno"
+            [style.width.%]="resultado.probabilidades[clase]"
+            [style.background]="getColorClase(clase)"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADVERTENCIA -->
+    <div class="advertencia">
+      ⚠️ Este resultado es una herramienta de apoyo al diagnóstico.
+      No reemplaza la evaluación de un profesional de la salud.
+    </div>
+
+  </ng-container>
+</div>
 
       <!-- CLASE PREDICHA -->
       <div class="resultado-principal"

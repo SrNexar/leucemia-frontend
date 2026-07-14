@@ -13,7 +13,7 @@ import * as QRCode from 'qrcode';
 })
 export class App implements OnInit {
   readonly API = 'https://leucemia-backend.onrender.com';
-  readonly URL_APP = 'https://leucemia-app.onrender.com';
+  readonly URL_APP = 'https://leucemia-frontend.onrender.com';
 
   imagenPreview: string | null = null;
   archivoSeleccionado: File | null = null;

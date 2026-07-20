@@ -12,7 +12,7 @@ import * as QRCode from 'qrcode';
   styleUrl: './app.css'
 })
 export class App implements OnInit {
-  readonly API = 'https://leucemia-backend.onrender.com';
+  readonly API = 'https://leucemia-backend-production.up.railway.app/';
   readonly URL_APP = 'https://leucemia-frontend.onrender.com';
 
   imagenPreview: string | null = null;

@@ -10,21 +10,6 @@
           <p>Detección de leucemia mediante inteligencia artificial</p>
         </div>
       </div>
-      <button class="btn-qr" (click)="toggleQR()">
-        📱 {{ mostrarQR ? 'Cerrar QR' : 'Ver QR de acceso' }}
-      </button>
-    </div>
-
-    <!-- PANEL QR -->
-    <div class="qr-panel" *ngIf="mostrarQR">
-      <div class="qr-content">
-        <img [src]="qrDataUrl" alt="Código QR de acceso" class="qr-imagen"/>
-        <div class="qr-info">
-          <h3>Acceso móvil</h3>
-          <p>Escanea este código QR con tu dispositivo móvil para acceder a la aplicación desde cualquier lugar.</p>
-          <span class="qr-url">{{ URL_APP }}</span>
-        </div>
-      </div>
     </div>
   </header>
 

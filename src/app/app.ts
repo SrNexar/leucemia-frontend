@@ -1,27 +1,22 @@
-import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import * as QRCode from 'qrcode';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements OnInit {
+export class App {
   readonly API = 'https://leucemia-backend-production.up.railway.app';
-  readonly URL_APP = 'https://leucemia-frontend.onrender.com';
 
   imagenPreview: string | null = null;
   archivoSeleccionado: File | null = null;
   resultado: any = null;
   cargando = false;
   error: string | null = null;
-  qrDataUrl: string = '';
-  mostrarQR = false;
 
   muestras = [
     { clase: 'ALL',    ruta: 'Muestras/ALL.jpg',    color: '#F44336' },
@@ -32,26 +27,6 @@ export class App implements OnInit {
   ];
 
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
-
-  async ngOnInit() {
-    await this.generarQR();
-  }
-
-  async generarQR() {
-    try {
-      this.qrDataUrl = await QRCode.toDataURL(this.URL_APP, {
-        width: 200,
-        margin: 2,
-        color: {
-          dark: '#1a237e',
-          light: '#ffffff'
-        }
-      });
-      this.cdr.detectChanges();
-    } catch (err) {
-      console.error('Error generando QR:', err);
-    }
-  }
 
   onImagenSeleccionada(event: any) {
     const archivo = event.target.files[0];
@@ -111,10 +86,6 @@ export class App implements OnInit {
         this.cdr.detectChanges();
       }
     });
-  }
-
-  toggleQR() {
-    this.mostrarQR = !this.mostrarQR;
   }
 
   getColorClase(clase: string): string {

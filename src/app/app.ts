@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.css'
 })
 export class App {
-  readonly API = 'https://leucemia-backend-2txc.onrender.com/';
+  readonly API = 'https://leucemia-backend-2txc.onrender.com';
 
   imagenPreview: string | null = null;
   archivoSeleccionado: File | null = null;

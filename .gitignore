@@ -44,6 +44,7 @@ __screenshots__/
 *.env.*
 !.env.example
 /src/environments/*.ts
+!/src/environments/environment.ts
 !/src/environments/environment.example.ts
 
 # System files

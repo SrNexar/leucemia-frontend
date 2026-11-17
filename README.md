@@ -12,6 +12,8 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
+The API URL is generated from the `API_URL` environment variable. Configure `API_URL` in Render before building the application. The generated environment files are ignored by Git; only `src/environments/environment.example.ts` is tracked as a template. Locally, the value defaults to `http://localhost:5000`.
+
 ## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:

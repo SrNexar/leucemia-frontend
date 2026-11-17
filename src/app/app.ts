@@ -1,7 +1,6 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +10,7 @@ import { environment } from '../environments/environment';
   styleUrl: './app.css'
 })
 export class App {
-  readonly API = environment.apiUrl;
+  readonly API = 'https://leucemia-backend-2txc.onrender.com/';
 
   imagenPreview: string | null = null;
   archivoSeleccionado: File | null = null;
